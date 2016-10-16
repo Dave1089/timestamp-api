@@ -2,7 +2,7 @@ var express = require("express")
 var app = express();
 var unix = ""
 var natural = ""
-
+var port = process.env.PORT || 8080;
 app.use(express.static(__dirname + '/public'))
 app.get('/:path', function (req, res) {
   var param = req.params.path
@@ -30,6 +30,6 @@ app.get('/:path', function (req, res) {
   res.send(data);
 });
 
-app.listen(8080, function () {
+app.listen(port, function () {
   console.log('The app listening on port 8080!');
 });
