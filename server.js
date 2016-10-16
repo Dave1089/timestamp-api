@@ -2,6 +2,8 @@ var express = require("express")
 var app = express();
 var unix = ""
 var natural = ""
+
+app.use(express.static(__dirname + '/public'))
 app.get('/:path', function (req, res) {
   var param = req.params.path
   if(isNaN(param)){
@@ -25,7 +27,7 @@ app.get('/:path', function (req, res) {
     natural = m + " " + d + "," + " " + y
   }
   var data = JSON.stringify({"unix" : unix , "natural" : natural})
-  res.send("Parameter: " + data);
+  res.send(data);
 });
 
 app.listen(8080, function () {
